@@ -25,18 +25,21 @@ completion claim.
 
 ## Status
 
-This repository contains the product statement and validation boundary. The
-implementation starts only after the falsifier below is checked against the
-smallest useful fixture corpus.
+The first dependency-free implementation now lives in `coverage_witness.py`.
+It reads the JSON schema in [schema.md](schema.md), emits deterministic JSON
+or a concise text rendering, and uses exit codes suitable for a downstream
+policy (`0` covered, `1` missing, `2` unknown). The fixture corpus under
+`fixtures/` and the unit/integration tests exercise the falsifier boundary
+without network, credentials, an LLM, or a provider-specific adapter.
 
 ## Roadmap
 
 - [x] Create a dedicated public repository and state the problem boundary.
-- [ ] Define a secret-free manifest, event, and completion-claim schema.
-- [ ] Implement deterministic CLI output with explicit missing/unknown states.
-- [ ] Add adversarial fixtures: omitted reads, duplicate reads, malformed events,
+- [x] Define a secret-free manifest, event, and completion-claim schema.
+- [x] Implement deterministic CLI output with explicit missing/unknown states.
+- [x] Add adversarial fixtures: omitted reads, duplicate reads, malformed events,
       path aliases, and claims that exceed observed coverage.
-- [ ] Validate one reviewable integration sample end-to-end.
+- [x] Validate one reviewable integration sample end-to-end.
 - [ ] Stop at the deterministic fixture corpus and one integration sample
       unless an external consumer proves that a provider-specific adapter is
       necessary.
